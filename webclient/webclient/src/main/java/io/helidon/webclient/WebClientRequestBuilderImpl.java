@@ -58,6 +58,7 @@ import io.helidon.common.serviceloader.HelidonServiceLoader;
 import io.helidon.media.common.MessageBodyReadableContent;
 import io.helidon.media.common.MessageBodyReaderContext;
 import io.helidon.media.common.MessageBodyWriterContext;
+import io.helidon.webclient.dns.CustomDnsResolver;
 import io.helidon.webclient.spi.WebClientService;
 
 import io.netty.bootstrap.Bootstrap;
@@ -580,6 +581,7 @@ class WebClientRequestBuilderImpl implements WebClientRequestBuilder {
 
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(eventGroup)
+                    .resolver(CustomDnsResolver.getResolver())
                     .channel(NioSocketChannel.class)
                     .handler(new NettyClientInitializer(requestConfiguration))
                     .option(ChannelOption.SO_KEEPALIVE, keepAlive)

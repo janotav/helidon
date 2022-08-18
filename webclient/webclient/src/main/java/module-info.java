@@ -37,6 +37,7 @@ module io.helidon.webclient {
     requires io.netty.handler;
     requires io.netty.handler.proxy;
     requires io.netty.transport;
+    requires io.netty.resolver;
 
     exports io.helidon.webclient;
     exports io.helidon.webclient.spi;
